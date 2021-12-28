@@ -17,10 +17,14 @@ language_translator = LanguageTranslatorV3(
 
 language_translator.set_service_url(url)
 
-def englishToFrench(englishText):
-    frenchText = language_translator.translate(text=englishText, model_id='en-fr').get_result()
-    return frenchText
+def english_to_french(englishtext):
+    frenchtextdic = json.dumps(language_translator.translate(text=englishtext, \
+     model_id='en-fr').get_result(), indent=2, ensure_ascii=False)
+    frenchtext= json.loads(frenchtextdic)
+    return frenchtext["translations"][0]["translation"]
 
-def frenchToEnglish(frenchText):
-    englishText = language_translator.translate(text=frenchText, model_id='fr-en').get_result()
-    return englishText
+def french_to_english(frenchtext):
+    englishtextdic = json.dumps(language_translator.translate(text=frenchtext, \
+     model_id='fr-en').get_result(), indent=2, ensure_ascii=False)
+    englishtext= json.loads(englishtextdic)
+    return englishtext["translations"][0]["translation"]
