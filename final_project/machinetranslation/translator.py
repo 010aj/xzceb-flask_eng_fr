@@ -15,12 +15,12 @@ language_translator = LanguageTranslatorV3(
     authenticator=authenticator
 )
 
-language_translator.set_service_url(api_url)
+language_translator.set_service_url(url)
 
 def englishToFrench(englishText):
-    #write the code here
+    frenchText = language_translator.translate(text=englishText, model_id='en-fr').get_result()
     return frenchText
 
 def frenchToEnglish(frenchText):
-    #write the code here
+    englishText = language_translator.translate(text=frenchText, model_id='fr-en').get_result()
     return englishText
